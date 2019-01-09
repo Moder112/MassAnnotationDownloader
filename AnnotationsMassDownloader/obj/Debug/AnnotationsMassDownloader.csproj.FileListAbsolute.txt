@@ -1,0 +1,14 @@
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\AnnotationsMassDownloader.exe.config
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\AnnotationsMassDownloader.exe
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\AnnotationsMassDownloader.pdb
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\AngleSharp.dll
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\Newtonsoft.Json.dll
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\YoutubeExplode.dll
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\AngleSharp.xml
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\Newtonsoft.Json.xml
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\YoutubeExplode.xml
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\obj\Debug\AnnotationsMassDownloader.csprojResolveAssemblyReference.cache
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\obj\Debug\AnnotationsMassDownloader.exe
+c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\obj\Debug\AnnotationsMassDownloader.pdb
+c:\Users\olek\Documents\Visual Studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\Costura.dll
+c:\Users\olek\Documents\Visual Studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\Costura.xml
