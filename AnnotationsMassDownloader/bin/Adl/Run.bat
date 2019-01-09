@@ -1,0 +1,1 @@
+AnnotationsMassDownloader.exe "$(author)//$(title)-$(id)$(ext)" channellist.txt

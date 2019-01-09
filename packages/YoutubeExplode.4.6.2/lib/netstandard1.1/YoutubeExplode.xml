@@ -1,0 +1,1751 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>YoutubeExplode</name>
+    </assembly>
+    <members>
+        <member name="T:YoutubeExplode.Exceptions.VideoRequiresPurchaseException">
+            <summary>
+            Thrown when a video is not playable because it requires purchase.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Exceptions.VideoRequiresPurchaseException.PreviewVideoId">
+            <summary>
+            ID of the preview video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Exceptions.VideoRequiresPurchaseException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Exceptions.VideoRequiresPurchaseException"/>.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Exceptions.VideoUnavailableException">
+            <summary>
+            Thrown when a video is not available and cannot be processed.
+            This can happen because the video does not exist, is deleted, is private, or due to other reasons.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Exceptions.VideoUnavailableException.VideoId">
+            <summary>
+            ID of the video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Exceptions.VideoUnavailableException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Exceptions.VideoUnavailableException"/>.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Exceptions.VideoUnplayableException">
+            <summary>
+            Thrown when a video is not playable and its streams cannot be resolved.
+            This can happen because the video requires purchase, is blocked in your country, is controversial, or due to other reasons.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Exceptions.VideoUnplayableException.VideoId">
+            <summary>
+            ID of the video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Exceptions.VideoUnplayableException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Exceptions.VideoUnplayableException"/>.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.IYoutubeClient">
+            <summary>
+            Interface for <see cref="T:YoutubeExplode.YoutubeClient"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetVideoAsync(System.String)">
+            <summary>
+            Gets video information by ID.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetVideoAuthorChannelAsync(System.String)">
+            <summary>
+            Gets author channel information for given video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetVideoMediaStreamInfosAsync(System.String)">
+            <summary>
+            Gets a set of all available media stream infos for given video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetVideoClosedCaptionTrackInfosAsync(System.String)">
+            <summary>
+            Gets all available closed caption track infos for given video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetPlaylistAsync(System.String,System.Int32)">
+            <summary>
+            Gets playlist information by ID.
+            The video list is truncated at given number of pages (1 page ≤ 200 videos).
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetPlaylistAsync(System.String)">
+            <summary>
+            Gets playlist information by ID.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.SearchVideosAsync(System.String,System.Int32)">
+            <summary>
+            Searches videos using given query.
+            The video list is truncated at given number of pages (1 page ≤ 20 videos).
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.SearchVideosAsync(System.String)">
+            <summary>
+            Searches videos using given query.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetChannelIdAsync(System.String)">
+            <summary>
+            Gets channel ID by username.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetChannelAsync(System.String)">
+            <summary>
+            Gets channel information by ID.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetChannelUploadsAsync(System.String,System.Int32)">
+            <summary>
+            Gets videos uploaded by channel with given ID.
+            The video list is truncated at given number of pages (1 page ≤ 200 videos).
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetChannelUploadsAsync(System.String)">
+            <summary>
+            Gets videos uploaded by channel with given ID.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetMediaStreamAsync(YoutubeExplode.Models.MediaStreams.MediaStreamInfo)">
+            <summary>
+            Gets the media stream associated with given metadata.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.DownloadMediaStreamAsync(YoutubeExplode.Models.MediaStreams.MediaStreamInfo,System.IO.Stream,System.IProgress{System.Double},System.Threading.CancellationToken)">
+            <summary>
+            Downloads the stream associated with given metadata to the output stream.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.GetClosedCaptionTrackAsync(YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo)">
+            <summary>
+            Gets the closed caption track associated with given metadata.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.IYoutubeClient.DownloadClosedCaptionTrackAsync(YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo,System.IO.Stream,System.IProgress{System.Double},System.Threading.CancellationToken)">
+            <summary>
+            Downloads the closed caption track associated with given metadata to the output stream.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.Channel">
+            <summary>
+            Information about a YouTube channel.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Channel.Id">
+            <summary>
+            ID of this channel.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Channel.Title">
+            <summary>
+            Title of this channel.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Channel.LogoUrl">
+            <summary>
+            Logo image URL of this channel.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Channel.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.Channel"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Channel.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaption">
+            <summary>
+            Text that gets displayed at specific time during video playback, as part of a <see cref="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack"/>.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaption.Text">
+            <summary>
+            Text displayed by this caption.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaption.Offset">
+            <summary>
+            Time at which this caption starts being displayed.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaption.Duration">
+            <summary>
+            Duration this caption is displayed.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.ClosedCaption.#ctor(System.String,System.TimeSpan,System.TimeSpan)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaption"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.ClosedCaption.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack">
+            <summary>
+            Set of captions that get displayed during video playback.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack.Info">
+            <summary>
+            Metadata associated with this track.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack.Captions">
+            <summary>
+            Collection of closed captions that belong to this track.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack.#ctor(YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo,System.Collections.Generic.IReadOnlyList{YoutubeExplode.Models.ClosedCaptions.ClosedCaption})">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack"/>.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo">
+            <summary>
+            Metadata associated with a certain <see cref="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack"/>.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo.Url">
+            <summary>
+            Manifest URL of the associated track.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo.Language">
+            <summary>
+            Language of the associated track.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo.IsAutoGenerated">
+            <summary>
+            Whether the associated track was automatically generated.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo.#ctor(System.String,YoutubeExplode.Models.ClosedCaptions.Language,System.Boolean)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.ClosedCaptions.Extensions">
+            <summary>
+            Extensions for <see cref="N:YoutubeExplode.Models.ClosedCaptions"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.Extensions.GetByTime(YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrack,System.TimeSpan)">
+            <summary>
+            Gets caption displayed at the given point in time.
+            Returns null if not found.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.ClosedCaptions.Language">
+            <summary>
+            Language information.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.Language.Code">
+            <summary>
+            ISO 639-1 code of this language.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ClosedCaptions.Language.Name">
+            <summary>
+            Full English name of this language.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.Language.#ctor(System.String,System.String)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.ClosedCaptions.Language"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ClosedCaptions.Language.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.Extensions">
+            <summary>
+            Extensions for <see cref="N:YoutubeExplode.Models"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetUrl(YoutubeExplode.Models.Video)">
+            <summary>
+            Gets the regular URL of a video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetShortUrl(YoutubeExplode.Models.Video)">
+            <summary>
+            Gets the short URL of a video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetEmbedUrl(YoutubeExplode.Models.Video)">
+            <summary>
+            Gets the embed URL of a video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetUrl(YoutubeExplode.Models.Playlist)">
+            <summary>
+            Gets the regular URL of a playlist.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetWatchUrl(YoutubeExplode.Models.Playlist)">
+            <summary>
+            Gets the watch URL of a playlist set to play the first video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetShortUrl(YoutubeExplode.Models.Playlist)">
+            <summary>
+            Gets the short URL of a playlist set to play the first video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetEmbedUrl(YoutubeExplode.Models.Playlist)">
+            <summary>
+            Gets the embed URL of a playlist set to play the first video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetUrl(YoutubeExplode.Models.Channel)">
+            <summary>
+            Gets the URL of a channel.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetVideoMixPlaylistId(YoutubeExplode.Models.Video)">
+            <summary>
+            Gets ID of a playlist that consists of similar videos.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetChannelVideoMixPlaylistId(YoutubeExplode.Models.Video)">
+            <summary>
+            Gets ID of a playlist that consists of similar videos from the same channel.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetChannelVideosPlaylistId(YoutubeExplode.Models.Channel)">
+            <summary>
+            Gets ID of a playlist that consists of this channel's uploads.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetPopularChannelVideosPlaylistId(YoutubeExplode.Models.Channel)">
+            <summary>
+            Gets ID of a playlist that consists of this channel's popular uploads.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetLikedVideosPlaylistId(YoutubeExplode.Models.Channel)">
+            <summary>
+            Gets ID of a playlist that consists of this channel's liked videos.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Extensions.GetFavoritesPlaylistId(YoutubeExplode.Models.Channel)">
+            <summary>
+            Gets ID of a playlist that consists of this channel's favorite videos.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.AudioEncoding">
+            <summary>
+            Audio encoding.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.AudioEncoding.Mp3">
+            <summary>
+            MPEG-2 Audio Layer III.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.AudioEncoding.Aac">
+            <summary>
+            MPEG-4 Part 3, Advanced Audio Coding (AAC).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.AudioEncoding.Vorbis">
+            <summary>
+            Vorbis.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.AudioEncoding.Opus">
+            <summary>
+            Opus.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.AudioStreamInfo">
+            <summary>
+            Metadata associated with a certain <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStream"/> that contains only audio.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.AudioStreamInfo.Bitrate">
+            <summary>
+            Bitrate (bits/s) of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.AudioStreamInfo.AudioEncoding">
+            <summary>
+            Audio encoding of the associated stream.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.AudioStreamInfo.#ctor(System.Int32,System.String,YoutubeExplode.Models.MediaStreams.Container,System.Int64,System.Int64,YoutubeExplode.Models.MediaStreams.AudioEncoding)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.MediaStreams.AudioStreamInfo"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.AudioStreamInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.Container">
+            <summary>
+            Media stream container type.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.Container.Mp4">
+            <summary>
+            MPEG-4 Part 14 (.mp4).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.Container.M4A">
+            <summary>
+            MPEG-4 Part 14 audio-only (.m4a).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.Container.WebM">
+            <summary>
+            Web Media (.webm).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.Container.Tgpp">
+            <summary>
+            3rd Generation Partnership Project (.3gpp).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.Container.Flv">
+            <summary>
+            Flash Video (.flv).
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.Extensions">
+            <summary>
+            Extensions for <see cref="N:YoutubeExplode.Models.MediaStreams"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.Extensions.GetFileExtension(YoutubeExplode.Models.MediaStreams.Container)">
+            <summary>
+            Gets file extension based on container type.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.Extensions.GetAll(YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet)">
+            <summary>
+            Gets all available media stream infos in a <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.Extensions.GetAllVideoQualities(YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet)">
+            <summary>
+            Gets all video qualities available in a <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.Extensions.WithHighestVideoQuality(System.Collections.Generic.IEnumerable{YoutubeExplode.Models.MediaStreams.MuxedStreamInfo})">
+            <summary>
+            Gets the muxed stream with highest video quality.
+            Returns null if sequence is empty.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.Extensions.WithHighestVideoQuality(System.Collections.Generic.IEnumerable{YoutubeExplode.Models.MediaStreams.VideoStreamInfo})">
+            <summary>
+            Gets the video stream with highest video quality.
+            Returns null if sequence is empty.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.Extensions.WithHighestBitrate(System.Collections.Generic.IEnumerable{YoutubeExplode.Models.MediaStreams.AudioStreamInfo})">
+            <summary>
+            Gets the audio stream with highest bitrate.
+            Returns null if sequence is empty.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.Extensions.WithHighestBitrate(System.Collections.Generic.IEnumerable{YoutubeExplode.Models.MediaStreams.VideoStreamInfo})">
+            <summary>
+            Gets the video stream with highest bitrate.
+            Returns null if sequence is empty.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.MediaStream">
+            <summary>
+            Stream that contains raw media data.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStream.Info">
+            <summary>
+            Metadata associated with this stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.#ctor(YoutubeExplode.Models.MediaStreams.MediaStreamInfo,System.IO.Stream)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStream"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStream.Dispose(System.Boolean)">
+            <summary>
+            Disposes resources.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.MediaStreamInfo">
+            <summary>
+            Metadata associated with a certain <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStream"/>.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfo.Itag">
+            <summary>
+            Unique tag that identifies the properties of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfo.Url">
+            <summary>
+            URL of the endpoint that serves the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfo.Container">
+            <summary>
+            Container type of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfo.Size">
+            <summary>
+            Content length (bytes) of the associated stream.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStreamInfo.#ctor(System.Int32,System.String,YoutubeExplode.Models.MediaStreams.Container,System.Int64)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStreamInfo"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStreamInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet">
+            <summary>
+            Set of all available media stream infos.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet.Muxed">
+            <summary>
+            Muxed streams.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet.Audio">
+            <summary>
+            Audio-only streams.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet.Video">
+            <summary>
+            Video-only streams.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet.HlsLiveStreamUrl">
+            <summary>
+            Raw HTTP Live Streaming (HLS) URL to the m3u8 playlist.
+            Null if not a live stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet.ValidUntil">
+            <summary>
+            Expiry date for this information.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet.#ctor(System.Collections.Generic.IReadOnlyList{YoutubeExplode.Models.MediaStreams.MuxedStreamInfo},System.Collections.Generic.IReadOnlyList{YoutubeExplode.Models.MediaStreams.AudioStreamInfo},System.Collections.Generic.IReadOnlyList{YoutubeExplode.Models.MediaStreams.VideoStreamInfo},System.String,System.DateTimeOffset)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStreamInfoSet"/>.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo">
+            <summary>
+            Metadata associated with a certain <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStream"/> that contains both audio and video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo.AudioEncoding">
+            <summary>
+            Audio encoding of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo.VideoEncoding">
+            <summary>
+            Video encoding of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo.VideoQualityLabel">
+            <summary>
+            Video quality label of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo.VideoQuality">
+            <summary>
+            Video quality of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo.Resolution">
+            <summary>
+            Video resolution of the associated stream.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo.#ctor(System.Int32,System.String,YoutubeExplode.Models.MediaStreams.Container,System.Int64,YoutubeExplode.Models.MediaStreams.AudioEncoding,YoutubeExplode.Models.MediaStreams.VideoEncoding,System.String,YoutubeExplode.Models.MediaStreams.VideoQuality,YoutubeExplode.Models.MediaStreams.VideoResolution)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.MuxedStreamInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.VideoEncoding">
+            <summary>
+            Video encoding.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoEncoding.Mp4V">
+            <summary>
+            MPEG-4 Part 2.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoEncoding.H263">
+            <summary>
+            H263.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoEncoding.H264">
+            <summary>
+            MPEG-4 Part 10, H264, Advanced Video Coding (AVC).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoEncoding.Vp8">
+            <summary>
+            VP8.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoEncoding.Vp9">
+            <summary>
+            VP9.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoEncoding.Av1">
+            <summary>
+            AV1.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.VideoQuality">
+            <summary>
+            Video quality.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.Low144">
+            <summary>
+            Low quality (144p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.Low240">
+            <summary>
+            Low quality (240p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.Medium360">
+            <summary>
+            Medium quality (360p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.Medium480">
+            <summary>
+            Medium quality (480p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.High720">
+            <summary>
+            High quality (720p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.High1080">
+            <summary>
+            High quality (1080p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.High1440">
+            <summary>
+            High quality (1440p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.High2160">
+            <summary>
+            High quality (2160p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.High2880">
+            <summary>
+            High quality (2880p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.High3072">
+            <summary>
+            High quality (3072p).
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.MediaStreams.VideoQuality.High4320">
+            <summary>
+            High quality (4320p).
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.VideoResolution">
+            <summary>
+            Width and height of a video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoResolution.Width">
+            <summary>
+            Viewport width.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoResolution.Height">
+            <summary>
+            Viewport height.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoResolution.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.MediaStreams.VideoResolution"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoResolution.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoResolution.Equals(YoutubeExplode.Models.MediaStreams.VideoResolution)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoResolution.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoResolution.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoResolution.op_Equality(YoutubeExplode.Models.MediaStreams.VideoResolution,YoutubeExplode.Models.MediaStreams.VideoResolution)">
+            <summary />
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoResolution.op_Inequality(YoutubeExplode.Models.MediaStreams.VideoResolution,YoutubeExplode.Models.MediaStreams.VideoResolution)">
+            <summary />
+        </member>
+        <member name="T:YoutubeExplode.Models.MediaStreams.VideoStreamInfo">
+            <summary>
+            Metadata associated with a certain <see cref="T:YoutubeExplode.Models.MediaStreams.MediaStream"/> that contains only video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.Bitrate">
+            <summary>
+            Bitrate (bits/s) of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.VideoEncoding">
+            <summary>
+            Video encoding of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.VideoQualityLabel">
+            <summary>
+            Video quality label of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.VideoQuality">
+            <summary>
+            Video quality of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.Resolution">
+            <summary>
+            Video resolution of the associated stream.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.Framerate">
+            <summary>
+            Video framerate (FPS) of the associated stream.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.#ctor(System.Int32,System.String,YoutubeExplode.Models.MediaStreams.Container,System.Int64,System.Int64,YoutubeExplode.Models.MediaStreams.VideoEncoding,System.String,YoutubeExplode.Models.MediaStreams.VideoQuality,YoutubeExplode.Models.MediaStreams.VideoResolution,System.Int32)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.MediaStreams.VideoStreamInfo"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.MediaStreams.VideoStreamInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.Models.Playlist">
+            <summary>
+            Information about a YouTube playlist.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Playlist.Id">
+            <summary>
+            ID of this playlist.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Playlist.Type">
+            <summary>
+            Type of this playlist.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Playlist.Author">
+            <summary>
+            Author of this playlist.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Playlist.Title">
+            <summary>
+            Title of this playlist.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Playlist.Description">
+            <summary>
+            Description of this playlist.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Playlist.Statistics">
+            <summary>
+            Statistics of this playlist.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Playlist.Videos">
+            <summary>
+            Collection of videos contained in this playlist.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Playlist.#ctor(System.String,System.String,System.String,System.String,YoutubeExplode.Models.Statistics,System.Collections.Generic.IReadOnlyList{YoutubeExplode.Models.Video})">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.Playlist"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Playlist.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.Models.Playlist.GetPlaylistType(System.String)">
+            <summary>
+            Get playlist type by ID.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.PlaylistType">
+            <summary>
+            Playlist type.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.Normal">
+            <summary>
+            Regular playlist created by a user.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.VideoMix">
+            <summary>
+            Mix playlist generated to group similar videos.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.ChannelVideoMix">
+            <summary>
+            Mix playlist generated to group similar videos uploaded by the same channel.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.ChannelVideos">
+            <summary>
+            Playlist generated from channel uploads.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.PopularChannelVideos">
+            <summary>
+            Playlist generated from popular channel uploads.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.MusicAlbum">
+            <summary>
+            Playlist generated from automated music videos.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.LikedVideos">
+            <summary>
+            System playlist for videos liked by a user.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.Favorites">
+            <summary>
+            System playlist for videos favorited by a user.
+            </summary>
+        </member>
+        <member name="F:YoutubeExplode.Models.PlaylistType.WatchLater">
+            <summary>
+            System playlist for videos user added to watch later.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.Statistics">
+            <summary>
+            User activity statistics.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Statistics.ViewCount">
+            <summary>
+            View count.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Statistics.LikeCount">
+            <summary>
+            Like count.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Statistics.DislikeCount">
+            <summary>
+            Dislike count.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Statistics.AverageRating">
+            <summary>
+            Average user rating in stars (1 star to 5 stars).
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Statistics.#ctor(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.Statistics"/>.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.ThumbnailSet">
+            <summary>
+            Set of thumbnails for a video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ThumbnailSet.LowResUrl">
+            <summary>
+            Low resolution thumbnail URL.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ThumbnailSet.MediumResUrl">
+            <summary>
+            Medium resolution thumbnail URL.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ThumbnailSet.HighResUrl">
+            <summary>
+            High resolution thumbnail URL.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ThumbnailSet.StandardResUrl">
+            <summary>
+            Standard resolution thumbnail URL.
+            Not always available.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.ThumbnailSet.MaxResUrl">
+            <summary>
+            Max resolution thumbnail URL.
+            Not always available.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.ThumbnailSet.#ctor(System.String)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.ThumbnailSet"/>.
+            </summary>
+        </member>
+        <member name="T:YoutubeExplode.Models.Video">
+            <summary>
+            Information about a YouTube video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Id">
+            <summary>
+            ID of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Author">
+            <summary>
+            Author of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.UploadDate">
+            <summary>
+            Upload date of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Title">
+            <summary>
+            Title of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Description">
+            <summary>
+            Description of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Thumbnails">
+            <summary>
+            Thumbnails of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Duration">
+            <summary>
+            Duration of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Keywords">
+            <summary>
+            Search keywords of this video.
+            </summary>
+        </member>
+        <member name="P:YoutubeExplode.Models.Video.Statistics">
+            <summary>
+            Statistics of this video.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Video.#ctor(System.String,System.String,System.DateTimeOffset,System.String,System.String,YoutubeExplode.Models.ThumbnailSet,System.TimeSpan,System.Collections.Generic.IReadOnlyList{System.String},YoutubeExplode.Models.Statistics)">
+            <summary>
+            Initializes an instance of <see cref="T:YoutubeExplode.Models.Video"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.Models.Video.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:YoutubeExplode.YoutubeClient">
+            <summary>
+            The entry point for <see cref="N:YoutubeExplode"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetChannelIdAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetChannelAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetChannelUploadsAsync(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetChannelUploadsAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetClosedCaptionTrackAsync(YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.DownloadClosedCaptionTrackAsync(YoutubeExplode.Models.ClosedCaptions.ClosedCaptionTrackInfo,System.IO.Stream,System.IProgress{System.Double},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            Creates an instance of <see cref="T:YoutubeExplode.YoutubeClient"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.#ctor">
+            <summary>
+            Creates an instance of <see cref="T:YoutubeExplode.YoutubeClient"/>.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetMediaStreamAsync(YoutubeExplode.Models.MediaStreams.MediaStreamInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.DownloadMediaStreamAsync(YoutubeExplode.Models.MediaStreams.MediaStreamInfo,System.IO.Stream,System.IProgress{System.Double},System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetPlaylistAsync(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetPlaylistAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.SearchVideosAsync(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.SearchVideosAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ValidateVideoId(System.String)">
+            <summary>
+            Verifies that the given string is syntactically a valid YouTube video ID.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.TryParseVideoId(System.String,System.String@)">
+            <summary>
+            Tries to parse video ID from a YouTube video URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ParseVideoId(System.String)">
+            <summary>
+            Parses video ID from a YouTube video URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ValidatePlaylistId(System.String)">
+            <summary>
+            Verifies that the given string is syntactically a valid YouTube playlist ID.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.TryParsePlaylistId(System.String,System.String@)">
+            <summary>
+            Tries to parse playlist ID from a YouTube playlist URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ParsePlaylistId(System.String)">
+            <summary>
+            Parses playlist ID from a YouTube playlist URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ValidateUsername(System.String)">
+            <summary>
+            Verifies that the given string is syntactically a valid YouTube username.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.TryParseUsername(System.String,System.String@)">
+            <summary>
+            Tries to parse username from a YouTube user URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ParseUsername(System.String)">
+            <summary>
+            Parses username from a YouTube user URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ValidateChannelId(System.String)">
+            <summary>
+            Verifies that the given string is syntactically a valid YouTube channel ID.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.TryParseChannelId(System.String,System.String@)">
+            <summary>
+            Tries to parse channel ID from a YouTube channel URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.ParseChannelId(System.String)">
+            <summary>
+            Parses channel ID from a YouTube channel URL.
+            </summary>
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetVideoAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetVideoAuthorChannelAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetVideoMediaStreamInfosAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:YoutubeExplode.YoutubeClient.GetVideoClosedCaptionTrackInfosAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:JetBrains.Annotations.CanBeNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could be <c>null</c> sometimes,
+            so the check for <c>null</c> is necessary before its usage.
+            </summary>
+            <example><code>
+            [CanBeNull] object Test() => null;
+            
+            void UseTest() {
+              var p = Test();
+              var s = p.ToString(); // Warning: Possible 'System.NullReferenceException'
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotNullAttribute">
+            <summary>
+            Indicates that the value of the marked element could never be <c>null</c>.
+            </summary>
+            <example><code>
+            [NotNull] object Foo() {
+              return null; // Warning: Possible 'null' assignment
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.ItemNotNullAttribute">
+            <summary>
+            Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+            and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+            or of the Lazy.Value property can never be null.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ItemCanBeNullAttribute">
+            <summary>
+            Can be appplied to symbols of types derived from IEnumerable as well as to symbols of Task
+            and Lazy classes to indicate that the value of a collection item, of the Task.Result property
+            or of the Lazy.Value property can be null.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.StringFormatMethodAttribute">
+            <summary>
+            Indicates that the marked method builds string by format pattern and (optional) arguments.
+            Parameter, which contains format string, should be given in constructor. The format string
+            should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/>-like form.
+            </summary>
+            <example><code>
+            [StringFormatMethod("message")]
+            void ShowError(string message, params object[] args) { /* do something */ }
+            
+            void Foo() {
+              ShowError("Failed: {0}"); // Warning: Non-existing argument in format string
+            }
+            </code></example>
+        </member>
+        <member name="M:JetBrains.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
+            <param name="formatParameterName">
+            Specifies which parameter of an annotated method should be treated as format-string
+            </param>
+        </member>
+        <member name="T:JetBrains.Annotations.ValueProviderAttribute">
+            <summary>
+            For a parameter that is expected to be one of the limited set of values.
+            Specify fields of which type should be used as values for this parameter.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.InvokerParameterNameAttribute">
+            <summary>
+            Indicates that the function argument should be string literal and match one
+            of the parameters of the caller function. For example, ReSharper annotates
+            the parameter of <see cref="T:System.ArgumentNullException"/>.
+            </summary>
+            <example><code>
+            void Foo(string param) {
+              if (param == null)
+                throw new ArgumentNullException("par"); // Warning: Cannot resolve symbol
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.NotifyPropertyChangedInvocatorAttribute">
+             <summary>
+             Indicates that the method is contained in a type that implements
+             <c>System.ComponentModel.INotifyPropertyChanged</c> interface and this method
+             is used to notify that some property value changed.
+             </summary>
+             <remarks>
+             The method should be non-static and conform to one of the supported signatures:
+             <list>
+             <item><c>NotifyChanged(string)</c></item>
+             <item><c>NotifyChanged(params string[])</c></item>
+             <item><c>NotifyChanged{T}(Expression{Func{T}})</c></item>
+             <item><c>NotifyChanged{T,U}(Expression{Func{T,U}})</c></item>
+             <item><c>SetProperty{T}(ref T, T, string)</c></item>
+             </list>
+             </remarks>
+             <example><code>
+             public class Foo : INotifyPropertyChanged {
+               public event PropertyChangedEventHandler PropertyChanged;
+             
+               [NotifyPropertyChangedInvocator]
+               protected virtual void NotifyChanged(string propertyName) { ... }
+            
+               string _name;
+             
+               public string Name {
+                 get { return _name; }
+                 set { _name = value; NotifyChanged("LastName"); /* Warning */ }
+               }
+             }
+             </code>
+             Examples of generated notifications:
+             <list>
+             <item><c>NotifyChanged("Property")</c></item>
+             <item><c>NotifyChanged(() =&gt; Property)</c></item>
+             <item><c>NotifyChanged((VM x) =&gt; x.Property)</c></item>
+             <item><c>SetProperty(ref myField, value, "Property")</c></item>
+             </list>
+             </example>
+        </member>
+        <member name="T:JetBrains.Annotations.ContractAnnotationAttribute">
+            <summary>
+            Describes dependency between method input and output.
+            </summary>
+            <syntax>
+            <p>Function Definition Table syntax:</p>
+            <list>
+            <item>FDT      ::= FDTRow [;FDTRow]*</item>
+            <item>FDTRow   ::= Input =&gt; Output | Output &lt;= Input</item>
+            <item>Input    ::= ParameterName: Value [, Input]*</item>
+            <item>Output   ::= [ParameterName: Value]* {halt|stop|void|nothing|Value}</item>
+            <item>Value    ::= true | false | null | notnull | canbenull</item>
+            </list>
+            If method has single input parameter, it's name could be omitted.<br/>
+            Using <c>halt</c> (or <c>void</c>/<c>nothing</c>, which is the same) for method output
+            means that the methos doesn't return normally (throws or terminates the process).<br/>
+            Value <c>canbenull</c> is only applicable for output parameters.<br/>
+            You can use multiple <c>[ContractAnnotation]</c> for each FDT row, or use single attribute
+            with rows separated by semicolon. There is no notion of order rows, all rows are checked
+            for applicability and applied per each program state tracked by R# analysis.<br/>
+            </syntax>
+            <examples><list>
+            <item><code>
+            [ContractAnnotation("=&gt; halt")]
+            public void TerminationMethod()
+            </code></item>
+            <item><code>
+            [ContractAnnotation("halt &lt;= condition: false")]
+            public void Assert(bool condition, string text) // regular assertion method
+            </code></item>
+            <item><code>
+            [ContractAnnotation("s:null =&gt; true")]
+            public bool IsNullOrEmpty(string s) // string.IsNullOrEmpty()
+            </code></item>
+            <item><code>
+            // A method that returns null if the parameter is null,
+            // and not null if the parameter is not null
+            [ContractAnnotation("null =&gt; null; notnull =&gt; notnull")]
+            public object Transform(object data) 
+            </code></item>
+            <item><code>
+            [ContractAnnotation("=&gt; true, result: notnull; =&gt; false, result: null")]
+            public bool TryParse(string s, out Person result)
+            </code></item>
+            </list></examples>
+        </member>
+        <member name="T:JetBrains.Annotations.LocalizationRequiredAttribute">
+            <summary>
+            Indicates that marked element should be localized or not.
+            </summary>
+            <example><code>
+            [LocalizationRequiredAttribute(true)]
+            class Foo {
+              string str = "my string"; // Warning: Localizable string
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.CannotApplyEqualityOperatorAttribute">
+            <summary>
+            Indicates that the value of the marked type (or its derivatives)
+            cannot be compared using '==' or '!=' operators and <c>Equals()</c>
+            should be used instead. However, using '==' or '!=' for comparison
+            with <c>null</c> is always permitted.
+            </summary>
+            <example><code>
+            [CannotApplyEqualityOperator]
+            class NoEquality { }
+            
+            class UsesNoEquality {
+              void Test() {
+                var ca1 = new NoEquality();
+                var ca2 = new NoEquality();
+                if (ca1 != null) { // OK
+                  bool condition = ca1 == ca2; // Warning
+                }
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.BaseTypeRequiredAttribute">
+            <summary>
+            When applied to a target attribute, specifies a requirement for any type marked
+            with the target attribute to implement or inherit specific type or types.
+            </summary>
+            <example><code>
+            [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+            class ComponentAttribute : Attribute { }
+            
+            [Component] // ComponentAttribute requires implementing IComponent interface
+            class MyComponent : IComponent { }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.UsedImplicitlyAttribute">
+            <summary>
+            Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
+            so this symbol will not be marked as unused (as well as by other usage inspections).
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.MeansImplicitUseAttribute">
+            <summary>
+            Should be used on attributes and causes ReSharper to not mark symbols marked with such attributes
+            as unused (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Access">
+            <summary>Only entity marked with attribute considered used.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Assign">
+            <summary>Indicates implicit assignment to a member.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature">
+            <summary>
+            Indicates implicit instantiation of a type with fixed constructor signature.
+            That means any unused constructor parameters won't be reported as such.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature">
+            <summary>Indicates implicit instantiation of a type.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseTargetFlags">
+            <summary>
+            Specify what is considered used implicitly when marked
+            with <see cref="T:JetBrains.Annotations.MeansImplicitUseAttribute"/> or <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Members">
+            <summary>Members of entity marked with attribute are considered used.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.WithMembers">
+            <summary>Entity marked with attribute and all its members considered used.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PublicAPIAttribute">
+            <summary>
+            This attribute is intended to mark publicly available API
+            which should not be removed and so is treated as used.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.InstantHandleAttribute">
+            <summary>
+            Tells code analysis engine if the parameter is completely handled when the invoked method is on stack.
+            If the parameter is a delegate, indicates that delegate is executed while the method is executed.
+            If the parameter is an enumerable, indicates that it is enumerated while the method is executed.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PureAttribute">
+            <summary>
+            Indicates that a method does not make any observable state changes.
+            The same as <c>System.Diagnostics.Contracts.PureAttribute</c>.
+            </summary>
+            <example><code>
+            [Pure] int Multiply(int x, int y) => x * y;
+            
+            void M() {
+              Multiply(123, 42); // Waring: Return value of pure method is not used
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.MustUseReturnValueAttribute">
+            <summary>
+            Indicates that the return value of method invocation must be used.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ProvidesContextAttribute">
+            <summary>
+            Indicates the type member or parameter of some type, that should be used instead of all other ways
+            to get the value that type. This annotation is useful when you have some "context" value evaluated
+            and stored somewhere, meaning that all other ways to get this value must be consolidated with existing one.
+            </summary>
+            <example><code>
+            class Foo {
+              [ProvidesContext] IBarService _barService = ...;
+            
+              void ProcessNode(INode node) {
+                DoSomething(node, node.GetGlobalServices().Bar);
+                //              ^ Warning: use value of '_barService' field
+              }
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.PathReferenceAttribute">
+            <summary>
+            Indicates that a parameter is a path to a file or a folder within a web project.
+            Path can be relative or absolute, starting from web root (~).
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.SourceTemplateAttribute">
+            <summary>
+            An extension method marked with this attribute is processed by ReSharper code completion
+            as a 'Source Template'. When extension method is completed over some expression, it's source code
+            is automatically expanded like a template at call site.
+            </summary>
+            <remarks>
+            Template method body can contain valid source code and/or special comments starting with '$'.
+            Text inside these comments is added as source code when the template is applied. Template parameters
+            can be used either as additional method parameters or as identifiers wrapped in two '$' signs.
+            Use the <see cref="T:JetBrains.Annotations.MacroAttribute"/> attribute to specify macros for parameters.
+            </remarks>
+            <example>
+            In this example, the 'forEach' method is a source template available over all values
+            of enumerable types, producing ordinary C# 'foreach' statement and placing caret inside block:
+            <code>
+            [SourceTemplate]
+            public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; xs) {
+              foreach (var x in xs) {
+                 //$ $END$
+              }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="T:JetBrains.Annotations.MacroAttribute">
+            <summary>
+            Allows specifying a macro for a parameter of a <see cref="T:JetBrains.Annotations.SourceTemplateAttribute">source template</see>.
+            </summary>
+            <remarks>
+            You can apply the attribute on the whole method or on any of its additional parameters. The macro expression
+            is defined in the <see cref="P:JetBrains.Annotations.MacroAttribute.Expression"/> property. When applied on a method, the target
+            template parameter is defined in the <see cref="P:JetBrains.Annotations.MacroAttribute.Target"/> property. To apply the macro silently
+            for the parameter, set the <see cref="P:JetBrains.Annotations.MacroAttribute.Editable"/> property value = -1.
+            </remarks>
+            <example>
+            Applying the attribute on a source template method:
+            <code>
+            [SourceTemplate, Macro(Target = "item", Expression = "suggestVariableName()")]
+            public static void forEach&lt;T&gt;(this IEnumerable&lt;T&gt; collection) {
+              foreach (var item in collection) {
+                //$ $END$
+              }
+            }
+            </code>
+            Applying the attribute on a template method parameter:
+            <code>
+            [SourceTemplate]
+            public static void something(this Entity x, [Macro(Expression = "guid()", Editable = -1)] string newguid) {
+              /*$ var $x$Id = "$newguid$" + x.ToString();
+              x.DoSomething($x$Id); */
+            }
+            </code>
+            </example>
+        </member>
+        <member name="P:JetBrains.Annotations.MacroAttribute.Expression">
+            <summary>
+            Allows specifying a macro that will be executed for a <see cref="T:JetBrains.Annotations.SourceTemplateAttribute">source template</see>
+            parameter when the template is expanded.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Annotations.MacroAttribute.Editable">
+            <summary>
+            Allows specifying which occurrence of the target parameter becomes editable when the template is deployed.
+            </summary>
+            <remarks>
+            If the target parameter is used several times in the template, only one occurrence becomes editable;
+            other occurrences are changed synchronously. To specify the zero-based index of the editable occurrence,
+            use values >= 0. To make the parameter non-editable when the template is expanded, use -1.
+            </remarks>>
+        </member>
+        <member name="P:JetBrains.Annotations.MacroAttribute.Target">
+            <summary>
+            Identifies the target parameter of a <see cref="T:JetBrains.Annotations.SourceTemplateAttribute">source template</see> if the
+            <see cref="T:JetBrains.Annotations.MacroAttribute"/> is applied on a template method.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcActionAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC action. If applied to a method, the MVC action name is calculated
+            implicitly from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcAreaAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC area.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcControllerAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is
+            an MVC controller. If applied to a method, the MVC controller name is calculated
+            implicitly from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.ChildActionExtensions.RenderAction(HtmlHelper, String, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcMasterAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC Master. Use this attribute
+            for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcModelTypeAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC model type. Use this attribute
+            for custom wrappers similar to <c>System.Web.Mvc.Controller.View(String, Object)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcPartialViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter is an MVC
+            partial view. If applied to a method, the MVC partial view name is calculated implicitly
+            from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.RenderPartialExtensions.RenderPartial(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcSuppressViewErrorAttribute">
+            <summary>
+            ASP.NET MVC attribute. Allows disabling inspections for MVC views within a class or a method.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcDisplayTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC display template.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.Mvc.Html.DisplayExtensions.DisplayForModel(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcEditorTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC editor template.
+            Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Html.EditorExtensions.EditorForModel(HtmlHelper, String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcTemplateAttribute">
+            <summary>
+            ASP.NET MVC attribute. Indicates that a parameter is an MVC template.
+            Use this attribute for custom wrappers similar to
+            <c>System.ComponentModel.DataAnnotations.UIHintAttribute(System.String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component. If applied to a method, the MVC view name is calculated implicitly
+            from the context. Use this attribute for custom wrappers similar to
+            <c>System.Web.Mvc.Controller.View(Object)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewComponentAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component name.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewComponentViewAttribute">
+            <summary>
+            ASP.NET MVC attribute. If applied to a parameter, indicates that the parameter
+            is an MVC view component view. If applied to a method, the MVC view component view name is default.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcActionSelectorAttribute">
+            <summary>
+            ASP.NET MVC attribute. When applied to a parameter of an attribute,
+            indicates that this parameter is an MVC action name.
+            </summary>
+            <example><code>
+            [ActionName("Foo")]
+            public ActionResult Login(string returnUrl) {
+              ViewBag.ReturnUrl = Url.Action("Foo"); // OK
+              return RedirectToAction("Bar"); // Error: Cannot resolve action
+            }
+            </code></example>
+        </member>
+        <member name="T:JetBrains.Annotations.RazorSectionAttribute">
+            <summary>
+            Razor attribute. Indicates that a parameter or a method is a Razor section.
+            Use this attribute for custom wrappers similar to 
+            <c>System.Web.WebPages.WebPageBase.RenderSection(String)</c>.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.CollectionAccessAttribute">
+            <summary>
+            Indicates how method, constructor invocation or property access
+            over collection type affects content of the collection.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.None">
+            <summary>Method does not use or modify content of the collection.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.Read">
+            <summary>Method only reads content of the collection but does not modify it.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.ModifyExistingContent">
+            <summary>Method can change content of the collection but does not add new elements.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.CollectionAccessType.UpdatedContent">
+            <summary>Method can add new elements to the collection.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionMethodAttribute">
+            <summary>
+            Indicates that the marked method is assertion method, i.e. it halts control flow if
+            one of the conditions is satisfied. To set the condition, mark one of the parameters with 
+            <see cref="T:JetBrains.Annotations.AssertionConditionAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionConditionAttribute">
+            <summary>
+            Indicates the condition parameter of the assertion method. The method itself should be
+            marked by <see cref="T:JetBrains.Annotations.AssertionMethodAttribute"/> attribute. The mandatory argument of
+            the attribute is the assertion type.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionConditionType">
+            <summary>
+            Specifies assertion type. If the assertion method argument satisfies the condition,
+            then the execution continues. Otherwise, execution is assumed to be halted.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_TRUE">
+            <summary>Marked parameter should be evaluated to true.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_FALSE">
+            <summary>Marked parameter should be evaluated to false.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_NULL">
+            <summary>Marked parameter should be evaluated to null value.</summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_NOT_NULL">
+            <summary>Marked parameter should be evaluated to not null value.</summary>
+        </member>
+        <member name="T:JetBrains.Annotations.TerminatesProgramAttribute">
+            <summary>
+            Indicates that the marked method unconditionally terminates control flow execution.
+            For example, it could unconditionally throw exception.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.LinqTunnelAttribute">
+            <summary>
+            Indicates that method is pure LINQ method, with postponed enumeration (like Enumerable.Select,
+            .Where). This annotation allows inference of [InstantHandle] annotation for parameters
+            of delegate type by analyzing LINQ method chains.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.NoEnumerationAttribute">
+            <summary>
+            Indicates that IEnumerable, passed as parameter, is not enumerated.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.RegexPatternAttribute">
+            <summary>
+            Indicates that parameter is regular expression pattern.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.NoReorderAttribute">
+            <summary>
+            Prevents the Member Reordering feature from tossing members of the marked class.
+            </summary>
+            <remarks>
+            The attribute must be mentioned in your member reordering patterns
+            </remarks>
+        </member>
+        <member name="T:JetBrains.Annotations.XamlItemsControlAttribute">
+            <summary>
+            XAML attribute. Indicates the type that has <c>ItemsSource</c> property and should be treated
+            as <c>ItemsControl</c>-derived type, to enable inner items <c>DataContext</c> type resolve.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.XamlItemBindingOfItemsControlAttribute">
+            <summary>
+            XAML attribute. Indicates the property of some <c>BindingBase</c>-derived type, that
+            is used to bind some item of <c>ItemsControl</c>-derived type. This annotation will
+            enable the <c>DataContext</c> type resolve for XAML bindings for such properties.
+            </summary>
+            <remarks>
+            Property should have the tree ancestor of the <c>ItemsControl</c> type or
+            marked with the <see cref="T:JetBrains.Annotations.XamlItemsControlAttribute"/> attribute.
+            </remarks>
+        </member>
+    </members>
+</doc>
