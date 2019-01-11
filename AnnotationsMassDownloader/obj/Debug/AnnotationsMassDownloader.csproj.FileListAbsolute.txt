@@ -12,3 +12,17 @@ c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\An
 c:\users\olek\documents\visual studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\obj\Debug\AnnotationsMassDownloader.pdb
 c:\Users\olek\Documents\Visual Studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\Costura.dll
 c:\Users\olek\Documents\Visual Studio 2015\Projects\AnnotationsMassDownloader\AnnotationsMassDownloader\bin\Debug\Costura.xml
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\AnnotationsMassDownloader.exe.config
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\obj\Debug\AnnotationsMassDownloader.exe
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\obj\Debug\AnnotationsMassDownloader.pdb
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\AnnotationsMassDownloader.exe
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\AnnotationsMassDownloader.pdb
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\AngleSharp.dll
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\Costura.dll
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\YoutubeExplode.dll
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\AngleSharp.xml
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\Costura.xml
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\bin\Debug\YoutubeExplode.xml
+C:\Users\Aleksander\Documents\MassAnnotationDownloader-master\MassAnnotationDownloader-master\AnnotationsMassDownloader\obj\Debug\AnnotationsMassDownloader.csprojResolveAssemblyReference.cache

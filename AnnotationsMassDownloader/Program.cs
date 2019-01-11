@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using YoutubeExplode;
 
@@ -23,24 +24,44 @@ namespace AnnotationsMassDownloader
                 if (args[1].Contains("watch?v="))
                 {
                     string videoid = args[1].Substring(args[1].IndexOf("=")+1).Replace("/", "");
+                    if (videoid.Contains("&"))videoid= videoid.Substring(0, videoid.IndexOf("&"));
                     Console.WriteLine("Downloading: " + videoid);
-                    runrunshit(videoid, args[0]);
-                 
+                    try
+                    {
+                        runrunshit(videoid, args[0]);
+                    }catch(Exception e)
+                    {
+                        Console.WriteLine("Video init failed\n" + e);
+                    }
                 }
                 else if (args[1].Contains("https://www.youtube.com/user/"))
                 {
                     string youtube = "https://www.youtube.com/user/";
                     string cid = args[1].Substring(args[1].IndexOf(youtube) + youtube.Length).Replace("/", "");
-                    getid(cid, args[0]);
+                    try
+                    {
+                        getid(cid, args[0]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("User init failed\n" + e);
+                    }
                     // getchannelshit(cid, args[0]);
                 }
                 else if (args[1].Contains("https://www.youtube.com/channel/"))
                 {
                     string youtube = "https://www.youtube.com/channel/";
                     string cid = args[1].Substring(args[1].IndexOf(youtube) + youtube.Length).Replace("/", "");
-
-                    getchannelshit(cid, args[0]);
+                    try
+                    {
+                        getchannelshit(cid, args[0]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("User init failed\n" + e);
+                    }
                 }
+
                 else
                 {
                     if (File.Exists(args[1]))
@@ -62,22 +83,44 @@ namespace AnnotationsMassDownloader
                 if (ex.Contains("watch?v="))
                 {
                     string videoid = ex.Substring(ex.IndexOf("=") + 1).Replace("/", "");
+                    if (videoid.Contains("&"))videoid= videoid.Substring(0, videoid.IndexOf("&"));
                     Console.WriteLine("Downloading: " + videoid);
-                    await runrunshit(videoid, args[0]);
+                    try
+                    {
+                        await runrunshit(videoid, args[0]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("User init failed\n" + e);
+                    }
+
                 }
                 else if (ex.Contains("https://www.youtube.com/user/"))
                 {
                     string youtube = "https://www.youtube.com/user/";
                     string cid = ex.Substring(ex.IndexOf(youtube) + youtube.Length).Replace("/", "");
-                  await  getid(cid, args[0]);
+                    try
+                    {
+                        await  getid(cid, args[0]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("User init failed\n" + e);
+                    }
                     // getchannelshit(cid, args[0]);
                 }
                 else if (ex.Contains("https://www.youtube.com/channel/"))
                 {
                     string youtube = "https://www.youtube.com/channel/";
                     string cid = ex.Substring(ex.IndexOf(youtube) + youtube.Length).Replace("/", "");
-
-                  await  getchannelshit(cid, args[0]);
+                    try
+                    {
+                        await  getchannelshit(cid, args[0]);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("User init failed\n" + e);
+                    }
                 }
             }
         }
@@ -115,37 +158,61 @@ getshit(string videoid, string path)
             var client = new YoutubeClient();
             var video = await client.GetVideoAsync(videoid);
             var WClient = new WebClient();
-            try
+            int retry = 5;
+            while (retry > 0)
             {
-               WClient.DownloadFile("http://www.youtube.com/annotations_invideo?features=1&legacy=1&video_id=" + videoid, videoid);
-                while (WClient.IsBusy) ;
-                if (vetforformatting(videoid))
+                try
                 {
-                    string titletest = title(path, videoid, video.Title, video.Author);
-                    if (!File.Exists(titletest)) {
-                        File.Copy(videoid,titletest);
-                        Console.WriteLine("Downloaded annotations for video: " + video.Title);
-                        if (File.Exists(videoid)) File.Delete(videoid);
+                    WClient.DownloadFile("http://www.youtube.com/annotations_invideo?features=1&legacy=1&video_id=" + videoid, videoid);
+                    while (WClient.IsBusy) Thread.Sleep(100);
+
+                    if (vetforformatting(videoid))
+                    {
+                        string titletest = title(path, videoid, video.Title, video.Author);
+                        if (!File.Exists(titletest))
+                        {
+                            File.Copy(videoid, titletest);
+                            Console.WriteLine("Downloaded annotations for video: " + video.Title);
+                            if (File.Exists(videoid)) File.Delete(videoid);
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Annotations file exists already: " + video.Title);
+                            if (File.Exists(videoid)) File.Delete(videoid);
+                            break;
+                        }
                     }
                     else
                     {
-                        Console.WriteLine("Annotations file exists already: " + video.Title);
+                        Console.WriteLine("Video doesn't contain old youtube annotations:  " + video.Title);
                         if (File.Exists(videoid)) File.Delete(videoid);
+                        break;
                     }
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine("Video doesn't contain old youtube annotations:  " + video.Title);
-                    if (File.Exists(videoid)) File.Delete(videoid);
+                    retry--;
+                   
+                    if (retry==0)
+                   
+                    Console.WriteLine(e);
+else
+                    {
+                        Console.WriteLine("Downloading failed, retrying " + video.Title);
+                    }
+                    try
+                    {
+                        if (File.Exists(videoid)) File.Delete(videoid);
+                    }
+                    catch
+                    {
+
+                    }
+                    Console.ReadLine();
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Downloading annotations for video failed: " + video.Title);
-                Console.WriteLine(e);
-                if (File.Exists(videoid)) File.Delete(videoid);
-                Console.ReadLine();
-            }
+
         }
         static bool vetforformatting(string path)
         {
